@@ -1,0 +1,19 @@
+two thing in installing sonar server 
+
+1. install SonarQube scanner - plugin and configure
+2. installation of sonar can be done any where but it should have better connectivity with sonar server (better go with ec2 in same vpc)  - for demo purpose use public addresses - but in org we can use private ip with dns-
+
+sonar installation steps: (https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero/blob/main/java-maven-sonar-argocd-helm-k8s/spring-boot-app/README.md)
+sudo apt install openjdk-17-jre
+apt install unzip  ----------> as root user
+adduser sonarqube                 ---------->   (as root)  and switch to sonaqube user     su - sonarqube   (for all below steps)
+cd /home/sonarqube/                                                                                                                         
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+
+(it takes 30 -50 seconds to start)  default user : admin, pw: admin   ---> login and update the password
+ cd /home/sonarqube/sonarqube-9.4.0.54424/logs/     ---> to check logs
